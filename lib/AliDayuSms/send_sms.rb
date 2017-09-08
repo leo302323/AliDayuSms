@@ -1,7 +1,7 @@
 require 'net/http'
 require 'digest'
 require 'json'
-require 'SecureRandom'
+require 'securerandom'
 
 module AliDayuSms
   extend self

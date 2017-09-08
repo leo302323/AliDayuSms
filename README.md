@@ -22,7 +22,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+-  config/initializers/AliDayuSms.rb
+
+```
+AliDayuSms.configure do |c|
+  c.app_key = '阿里大于APP key' #required
+  c.app_secret = '阿里大于 app secret' # required
+  c.sign_name = '阿里大于 签名' #required
+  c.redis_config = {host: host, port: 6379, user: 'foo'} # 如果不设置，默认使用本地localhost：7379
+end
+```
+- send code
+
+```
+# code length default 6, expire time default 600s
+
+AliDayuSms.send_code(phonecode, sms_template_code, sms_params = {}, length = 6, expire_in = 600)
+
+# send custom sms message
+
+AliDayuSms.send(phone, sms_template_code, sms_params)
+
+# get code sent to specific phone
+
+AliDayuSms.get_code(phone)
+
+```
+
+```
+# validate code for specific phone 
+AliDayuSms.validate_code(phone, code) #return boolean
+
+```
 
 ## Development
 
