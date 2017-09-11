@@ -34,7 +34,7 @@ AliDayuSms.configure do |c|
   c.partner_id = '' # 合作伙伴身份标识。
   c.target_app_key = '' # 被调用的目标AppKey，仅当被调用的API为第三方ISV提供时有效。
   c.session = 'session' #用户登录授权成功后，TOP颁发给应用的授权信息，详细介绍请点击这里。当此API的标签上注明：“需要授权”，则此参数必传；“不需要授权”，则此参数不需要传；“可选授权”，则此参数为可选。
-  c.redis_config = {host: host, port: 6379, user: 'foo'} # 如果不设置，默认使用本地localhost：7379
+  c.redis_config = {host: host, port: 6379, user: 'foo'} # 如果不设置，默认使用本地localhost：6379
 end
 ```
 - send code
