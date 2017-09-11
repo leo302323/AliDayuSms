@@ -10,18 +10,18 @@ Gem::Specification.new do |spec|
   spec.email         = ["zlw302323@gmail.com"]
 
   spec.summary       = %q{阿里大于发送短信通知插件}
-  spec.description   = %q{阿里大于发送短信通知插件}
-  # spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.description   = %q{阿里大于发送短信通知插件, 可以发送验证码并且验证验证码，发送任何文字短信}
+  spec.homepage      = "https://github.com/leo302323/AliDayuSms"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
+  # if spec.respond_to?(:metadata)
+  #   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  # else
+  #   raise "RubyGems 2.0 or newer is required to protect against " \
+  #     "public gem pushes."
+  # end
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
