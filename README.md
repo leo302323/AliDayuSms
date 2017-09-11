@@ -29,6 +29,11 @@ AliDayuSms.configure do |c|
   c.app_key = '阿里大于APP key' #required
   c.app_secret = '阿里大于 app secret' # required
   c.sign_name = '阿里大于 签名' #required
+  
+  # 非必填配置参数
+  c.partner_id = '' # 合作伙伴身份标识。
+  c.target_app_key = '' # 被调用的目标AppKey，仅当被调用的API为第三方ISV提供时有效。
+  c.session = 'session' #用户登录授权成功后，TOP颁发给应用的授权信息，详细介绍请点击这里。当此API的标签上注明：“需要授权”，则此参数必传；“不需要授权”，则此参数不需要传；“可选授权”，则此参数为可选。
   c.redis_config = {host: host, port: 6379, user: 'foo'} # 如果不设置，默认使用本地localhost：7379
 end
 ```
@@ -41,7 +46,9 @@ AliDayuSms.send_code(phonecode, sms_template_code, sms_params = {}, length = 6, 
 
 # send custom sms message
 
-AliDayuSms.send(phone, sms_template_code, sms_params)
+AliDayuSms.send(phone, sms_template_code, sms_params, extend = nil)
+
+AliDayuSms.send('18604246156', 'SMS_2635330', {code: '111111'})
 
 # get code sent to specific phone
 

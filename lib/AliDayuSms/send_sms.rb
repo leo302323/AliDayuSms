@@ -11,25 +11,29 @@ module AliDayuSms
     send(phone, sms_template_code, sms_params.merge(code: code))
   end
 
-  def send(phone, sms_template_code, sms_params)
+  def send(phone, sms_template_code, sms_params, extend = nil)
     sign_params = {
-        method: self.configuration.method_str,
-        app_key: self.configuration.app_key,
+        method: configuration.method_str,
+        app_key: configuration.app_key,
         timestamp: Time.now.getlocal('+08:00').strftime('%F %T'),
         v: '2.0',
         sign_method: 'md5',
         sms_type: 'normal',
-        sms_free_sign_name: self.configuration.sign_name,
+        sms_free_sign_name: configuration.sign_name,
         rec_num: phone,
         format: 'json',
-        simplify: true,
+        simplify: configuration.simplify,
         sms_template_code: sms_template_code,
-        sms_param: sms_params.to_json
-    }
+        sms_param: sms_params.to_json,
+        extend: extend,
+        target_app_key: configuration.target_app_key,
+        session: configuration.session,
+        partner_id: configuration.partner_id
+    }.reject { |_k, v| v.nil? }
 
     sp = sign_params.merge(sign: sign(sign_params))
 
-    Net::HTTP.post_form(URI.parse(self.configuration.url), sp)
+    Net::HTTP.post_form(URI.parse(configuration.url), sp)
   end
 
   private

@@ -9,13 +9,15 @@ require 'redis'
 module AliDayuSms
   # Your code goes here...
   class Configuration
-    attr_accessor :app_key, :app_secret, :log_path, :sign_name,
-                  :redis_config
-    attr_reader :url, :method_str
+    attr_accessor :app_key, :app_secret, :sign_name, #required
+                  :redis_config, :url, :target_app_key, :session, :partner_id, :simplify
+
+    attr_reader  :method_str
 
     def initialize
       @url = 'http://gw.api.taobao.com/router/rest'
       @method_str = 'alibaba.aliqin.fc.sms.num.send'
+      @simplify = false
     end
   end
 
